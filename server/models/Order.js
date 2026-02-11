@@ -39,16 +39,18 @@ const orderSchema = new mongoose.Schema({
 
   status: {
     type: String,
-    enum: ["placed", "confirmed", "preparing", "ready", "completed"],
-    default: "placed"
+    enum: ["pending", "accepted", "preparing", "out-for-delivery", "delivered", "cancelled"],
+    default:"pending"
   },
 
   paymentStatus: {
     type: String,
     enum: ["pending", "paid", "failed"],
-    default: "pending"
+    default: "pending",
   }
 
-}, { timestamps: true });
+}, 
+{ timestamps: true }
+);
 
 module.exports = mongoose.model("Order", orderSchema);

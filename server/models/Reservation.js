@@ -13,7 +13,7 @@ const reservationSchema = new mongoose.Schema({
   },
 
   date: { 
-    type: String,
+    type: Date,
     required: true 
   },
 
@@ -24,8 +24,8 @@ const reservationSchema = new mongoose.Schema({
 
   status: {
     type: String,
-    enum: ["booked", "cancelled", "completed"],
-    default: "booked"
+    enum: ["pending", "confirmed", "denied"],
+    default: "pending"
   }
 
 }, { timestamps: true });
