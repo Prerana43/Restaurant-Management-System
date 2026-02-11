@@ -1,20 +1,10 @@
-const express = require("express");
-const router = express.Router();
+const router = require("express").Router();
 const menuController = require("../controllers/menuController");
+const auth = require("../middleware/authMiddleware");
+const role = require("../middleware/roleMiddleware");
 
-// Get all menu items
 router.get("/", menuController.getMenu);
 
-// Get single item
-router.get("/:id", menuController.getMenuItem);
-
-// Add item (Admin)
-router.post("/", menuController.createMenuItem);
-
-// Update item
-router.put("/:id", menuController.updateMenuItem);
-
-// Delete item
-router.delete("/:id", menuController.deleteMenuItem);
+router.post("/", auth, role("admin"), menuController.addItem);
 
 module.exports = router;
