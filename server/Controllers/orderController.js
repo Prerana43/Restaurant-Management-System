@@ -1,5 +1,7 @@
 const Order = require("../models/Order");
 
+const sendEmail = require("../utils/sendEmail");
+
 exports.placeOrder = async (req, res) => {
   try {
     const order = await Order.create({
