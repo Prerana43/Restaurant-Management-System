@@ -1,17 +1,35 @@
-import Navbar from "../../components/layout/Navbar";
+import { Link } from "react-router-dom";
+import Navbar from "../../components/Navbar";
 
 const Dashboard = () => {
   return (
-    <div className="dashboard">
-      <h1>Welcome to Dashboard</h1>
+    <>
+      <Navbar />
 
-      <div className="card-container">
-        <div className="card">Manage Orders</div>
-        <div className="card">Manage Menu</div>
-        <div className="card">Reservations</div>
-        <div className="card">Payments</div>
+      <div className="dashboard">
+        <h1>Customer Dashboard</h1>
+
+        <div className="card-container">
+
+          <Link to="/menu" className="card">
+            View Menu
+          </Link>
+
+          <Link to="/orders" className="card">
+            My Orders
+          </Link>
+
+          <Link to="/reservations" className="card">
+            Reservations
+          </Link>
+
+          <Link to="/payments" className="card">
+            Payments
+          </Link>
+
+        </div>
       </div>
-    </div>
+    </>
   );
 };
 

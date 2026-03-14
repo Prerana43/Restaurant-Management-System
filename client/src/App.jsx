@@ -5,6 +5,10 @@ import Register from "./pages/auth/Register";
 
 import Dashboard from "./pages/customer/Dashboard";
 import Menu from "./pages/customer/Menu";
+import Orders from "./pages/customer/Orders";
+import Reservations from "./pages/customer/Reservation";
+import Payments from "./pages/customer/Payments";
+
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import StaffDashboard from "./pages/staff/StaffDashboard";
@@ -33,6 +37,33 @@ function App() {
         element={
           <PrivateRoute roles={["customer"]}>
             <Menu />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/orders"
+        element={
+          <PrivateRoute roles={["customer"]}>
+            <Orders />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/reservations"
+        element={
+          <PrivateRoute roles={["customer"]}>
+            <Reservations />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/payments"
+        element={
+          <PrivateRoute roles={["customer"]}>
+            <Payments />
           </PrivateRoute>
         }
       />

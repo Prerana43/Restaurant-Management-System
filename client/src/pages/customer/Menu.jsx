@@ -1,28 +1,37 @@
 import { useEffect, useState } from "react";
 import API from "../../api/axios";
-import Navbar from "../../components/layout/Navbar";
+import Navbar from "../../components/Navbar";
 
 const Menu = () => {
-  const [items, setItems] = useState([]);
+  const [menu, setMenu] = useState([]);
 
   useEffect(() => {
     const fetchMenu = async () => {
-      const { data } = await API.get("/menu");
-      setItems(data);
+      const res = await API.get("/menu");
+      setMenu(res.data);
     };
+
     fetchMenu();
   }, []);
 
   return (
     <>
       <Navbar />
-      <h2>Menu</h2>
-      {items.map((item) => (
-        <div key={item._id}>
-          <h4>{item.name}</h4>
-          <p>₹ {item.price}</p>
+
+      <div className="dashboard">
+        <h1>Restaurant Menu</h1>
+
+        <div className="card-container">
+          {menu.map((item) => (
+            <div className="card" key={item._id}>
+              <h3>{item.name}</h3>
+              <p>{item.description}</p>
+              <p>₹ {item.price}</p>
+              <button>Order</button>
+            </div>
+          ))}
         </div>
-      ))}
+      </div>
     </>
   );
 };

@@ -1,11 +1,19 @@
-import Navbar from "../../components/layout/Navbar";
+import Navbar from "../../components/Navbar";
 
 const StaffDashboard = () => {
   return (
     <>
       <Navbar />
-      <h2>Staff Panel</h2>
-      <p>Update Order Status</p>
+
+      <div className="dashboard">
+        <h1>Staff Panel</h1>
+
+        <div className="card-container">
+          <div className="card">Active Orders</div>
+          <div className="card">Update Order Status</div>
+          <div className="card">Reservations</div>
+        </div>
+      </div>
     </>
   );
 };
