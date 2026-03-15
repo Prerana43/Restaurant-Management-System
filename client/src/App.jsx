@@ -9,8 +9,8 @@ import Orders from "./pages/customer/Orders";
 import Reservations from "./pages/customer/Reservation";
 import Payments from "./pages/customer/Payments";
 
-
 import AdminDashboard from "./pages/admin/AdminDashboard";
+import AddMenu from "./pages/admin/AddMenu";
 import StaffDashboard from "./pages/staff/StaffDashboard";
 
 import PrivateRoute from "./components/PrivateRoute";
@@ -74,6 +74,15 @@ function App() {
         element={
           <PrivateRoute roles={["admin"]}>
             <AdminDashboard />
+          </PrivateRoute>
+        }
+      />
+
+      <Route
+        path="/admin/add-menu"
+        element={
+          <PrivateRoute roles={["admin"]}>
+            <AddMenu />
           </PrivateRoute>
         }
       />
