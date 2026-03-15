@@ -6,7 +6,6 @@ const PrivateRoute = ({ children, roles }) => {
   const { user } = useContext(AuthContext);
   console.log("User in PrivateRoute:", user);
   if (!user) return <Navigate to="/" />;
-
   if (roles && !roles.includes(user.role)) {
     return <Navigate to="/dashboard" />;
   }
