@@ -22,10 +22,14 @@ const AdminDashboard = () => {
             Manage Orders
           </div>
 
-          <div className="card">
-            Manage Reservations
-          </div>
+          <Link to="/admin/reservations" className="card">
+Manage Reservations
+</Link>
 
+
+<Link to="/admin/payments" className="card">
+Manage Payments
+</Link>
         </div>
 
       </div>

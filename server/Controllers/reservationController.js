@@ -1,20 +1,52 @@
-const Reservation = require("../models/reservation");
+const Reservation = require("../models/reservations");
 
+
+// CUSTOMER: create reservation
 exports.createReservation = async (req, res) => {
+
   try {
-    const reservation = await Reservation.create({
-      user: req.user._id,
-      date: req.body.date,
-      time: req.body.time
+
+    const { name, date, time, guests } = req.body;
+
+    const reservation = new Reservation({
+      user: req.user.id,
+      name,
+      date,
+      time,
+      guests
     });
 
-    res.status(201).json(reservation);
+    await reservation.save();
+
+    res.status(201).json({
+      message: "Reservation created",
+      reservation
+    });
+
   } catch (err) {
+
     res.status(500).json({ error: err.message });
+
   }
+
 };
 
-exports.getMyReservations = async (req, res) => {
-  const reservations = await Reservation.find({ user: req.user._id });
-  res.json(reservations);
+
+// ADMIN: get all reservations
+exports.getReservations = async (req, res) => {
+  try {
+
+    console.log("REQ.USER 👉", req.user);   // 👈 ADD THIS
+
+    const reservations = await Reservation.find()
+      .populate("user", "name email");
+
+    res.json(reservations);
+
+  } catch (err) {
+
+    console.log("ERROR 👉", err.message);   // 👈 ADD THIS
+
+    res.status(500).json({ error: err.message });
+  }
 };

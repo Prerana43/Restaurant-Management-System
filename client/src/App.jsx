@@ -11,6 +11,8 @@ import Payments from "./pages/customer/Payments";
 
 import AdminDashboard from "./pages/admin/AdminDashboard";
 import AddMenu from "./pages/admin/AddMenu";
+import ManageReservations from "./pages/admin/ManageReservations";
+import ManagePayments from "./pages/admin/ManagePayments";
 import StaffDashboard from "./pages/staff/StaffDashboard";
 
 import PrivateRoute from "./components/PrivateRoute";
@@ -86,6 +88,24 @@ function App() {
           </PrivateRoute>
         }
       />
+
+      <Route
+ path="/admin/reservations"
+ element={
+  <PrivateRoute roles={["admin"]}>
+   <ManageReservations />
+  </PrivateRoute>
+ }
+/>
+
+<Route
+  path="/admin/payments"
+  element={
+    <PrivateRoute roles={["admin"]}>
+      <ManagePayments />
+    </PrivateRoute>
+  }
+/>
 
       {/* Staff */}
       <Route
